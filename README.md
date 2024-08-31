@@ -24,13 +24,22 @@ cd travel-veda
 # Create a virtual environment
 python3 -m venv venv
 
-# Activate the virtual environment
+### 2. Activate the virtual environment
 # On Windows:
 venv\Scripts\activate
 
 # On macOS/Linux:
 source venv/bin/activate
+
+### 3. Install Required Dependencies
+       Install all necessary Python packages listed in requirements.txt
 pip install -r requirements.txt
+
+### 4. Setup MySQL Database
+Start your MySQL server.
+Create a new database called travelveda.
+Import the SQL script provided in the database/ directory to set up the database schema.
+
 # Log in to MySQL (replace 'root' and 'password' with your MySQL credentials)
 mysql -u root -p
 
@@ -44,7 +53,7 @@ exit
 mysql -u root -p travelveda < database/travelveda_schema.sql
 
 
-Update Configuration Files
+### 5. Update Configuration Files
 Rename the .env.example file to .env.
 Open the .env file and configure the following environment variables:
 
@@ -58,24 +67,28 @@ MYSQL_DB=travelveda
 GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 
-Run Database Migrations (if any)
+### 6. Run Database Migrations (if any)
 Ensure your database is up to date.
 flask db upgrade
-Start the Flask Development Server
+### 7. Start the Flask Development Server
 Run the Flask development server to start the application.
 flask run
- Access the Application
+### 8. Access the Application
 Open your web browser and go to:
 http://127.0.0.1:5000
-#  Explore the Application
+### 9.Explore the Application
 Sign Up: Create a new account.
 Log In: Log in with your credentials.
 Dashboard: Access the main dashboard where you can create and manage your itineraries.
 Map Integration: View your itinerary on a map using Google Maps.
 Expense Tracking: Keep track of your travel expenses.
 Social Sharing: Share your travel plans with others.
+### Additional Notes
+If you encounter any issues, ensure that all dependencies are installed and that the MySQL server is running correctly.
+The project uses mysql.connector for database interactions, and all configuration is done through the .env file.
+The app is designed for a local development environment. For production deployment, additional configurations may be required.
 
-License
+### License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 
