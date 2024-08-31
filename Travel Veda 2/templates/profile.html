@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 2rem;
+        }
+        .profile-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .profile-header p {
+            margin: 0;
+            color: #666;
+        }
+        .profile-form {
+            margin-top: 2rem;
+        }
+        .profile-form input,
+        .profile-form button {
+            display: block;
+            width: 100%;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .profile-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .profile-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <img src="{{ user.profile_picture }}" alt="Profile Picture">
+            <div>
+                <h1>{{ user.username }}</h1>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+        <div class="profile-form">
+            <form action="{{ url_for('update_profile') }}" method="POST" enctype="multipart/form-data">
+                <label for="profile_picture">Update Profile Picture:</label>
+                <input type="file" id="profile_picture" name="profile_picture">
+                <label for="email">Update Email:</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

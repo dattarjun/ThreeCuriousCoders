@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .blog-list {
+            list-style: none;
+            padding: 0;
+        }
+        .blog-item {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+        .blog-item h2 {
+            margin: 0;
+        }
+        .blog-item p {
+            color: #666;
+        }
+        .blog-item a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .blog-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Blogs</h1>
+        <ul class="blog-list">
+            {% for blog in blogs %}
+                <li class="blog-item">
+                    <h2><a href="{{ url_for('blog_post', blog_id=blog.id) }}">{{ blog.title }}</a></h2>
+                    <p>{{ blog.summary }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('create_blog_post') }}">Create New Blog Post</a>
+    </div>
+</body>
+</html>
